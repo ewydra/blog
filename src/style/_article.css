@@ -1,0 +1,25 @@
+.Article {
+  margin: 20px;
+}
+
+.Article__title {
+  font-weight: 650;
+  font-size: 3em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.Article__content {
+  width: 80vw;
+  margin: 0 auto;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.Article__footer {
+  display: flex;
+  justify-content: flex-end;
+  width: 80vw;
+  margin: 0 auto;
+  padding-top: 10px;
+}
