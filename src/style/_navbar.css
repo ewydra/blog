@@ -1,0 +1,15 @@
+.Navbar {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+  background-color: var(--background-blue);
+}
+
+.Navbar__link {
+  text-decoration: none;
+  color: var(--link);
+  font-size: 18px;
+  padding: 20px;
+  font-weight: 600;
+}
