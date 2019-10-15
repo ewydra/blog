@@ -7,16 +7,21 @@ import {
 import ArticleList from './components/ArticleList';
 import ArticleDetails from './components/ArticleDetails';
 import Navbar from './components/Navbar';
+import AddArticlePage from './components/AddArticlePage';
+import { SnackbarProvider } from './components/Snackbar/SnackbarContext';
 
 function App() {
   return (
-    <Router>
-      <Navbar />
-      <Switch>
-        <Route exact path="/" component={ArticleList} />
-        <Route path="/article/:id" component={ArticleDetails} />
-      </Switch>
-    </Router>
+    <SnackbarProvider>
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route exact path="/" component={ArticleList} />
+          <Route path="/article/new" component={AddArticlePage} />
+          <Route path="/article/:id" component={ArticleDetails} />
+        </Switch>
+      </Router>
+    </SnackbarProvider>
   );
 } 
 

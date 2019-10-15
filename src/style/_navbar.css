@@ -8,7 +8,7 @@
 
 .Navbar__link {
   text-decoration: none;
-  color: var(--link);
+  color: var(--font-color);
   font-size: 18px;
   padding: 20px;
   font-weight: 600;
