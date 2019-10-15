@@ -1,3 +1,5 @@
+import * as types from '../types/articles';
+
 const initialState = [
   { 
     id: 1,
@@ -26,10 +28,12 @@ const initialState = [
     
     Phasellus a dapibus enim. Nam malesuada ex a massa convallis mattis. Etiam volutpat lacus vitae odio molestie, eget interdum orci venenatis. Ut non placerat diam, nec blandit nibh. Vestibulum ut sapien sed orci ornare commodo. Nam id neque in dui tristique venenatis ac sed lorem. Nulla aliquam turpis id lorem molestie egestas. Etiam semper sodales libero, sed varius ante. Phasellus mollis euismod est vel gravida. Cras bibendum neque eget odio laoreet, ac feugiat quam egestas. Maecenas feugiat erat facilisis lacus ornare dictum. Aliquam quis porttitor enim. Nunc quis consequat elit. Donec pellentesque, purus eu varius condimentum, enim enim vestibulum erat, ut scelerisque dolor nulla et mi. Praesent tincidunt ante vitae neque fermentum pulvinar. Maecenas fermentum placerat consectetur.`
   },
-]
+];
 
 export default function getArticles(state = initialState, action) {
   switch (action.type) {
+    case types.ADD_ARTICLE: 
+      return [...state, action.payload];
     default:
       return state;
   }
