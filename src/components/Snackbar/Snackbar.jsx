@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import { SnackbarConsumer } from './SnackbarContext';
+import SnackbarContext from './SnackbarContext';
 
 const getClasses = status => (
   classnames(
@@ -11,13 +11,13 @@ const getClasses = status => (
 );
 
 const Snackbar = () => (
-  <SnackbarConsumer>
+  <SnackbarContext.Consumer>
     {({ isOpen, message, status }) => isOpen && (
       <div className={getClasses(status)}>
         {message}
       </div>
     )}
-  </SnackbarConsumer>
+  </SnackbarContext.Consumer>
 );
 
 export default Snackbar;

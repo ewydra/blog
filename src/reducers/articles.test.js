@@ -1,38 +1,83 @@
 import reducer from './articles';
+import * as types from '../types/articles';
 
-const setup = () => [
-  { 
+const setup = () => ({ data: [], loading: false, error: null });
+
+const getArticlesData = [
+  {
     id: 1,
-    title: 'Article one',
-    date: 'December 17, 2018 15:23:00',
-    abstract: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt suscipit dui, non auctor metus tincidunt sed.',
-    text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu sollicitudin libero, vitae lacinia orci. Maecenas sed egestas ipsum. Duis euismod tincidunt pretium. Cras consequat risus id fermentum elementum. Nullam a lorem sed risus hendrerit rhoncus. Proin lacus lectus, ultrices gravida venenatis nec, eleifend quis erat. Donec et blandit nunc. Donec id ultricies eros, sed pretium velit. Etiam augue mi, posuere et facilisis auctor, placerat eget turpis. Suspendisse augue nisl, ultricies sit amet nisl ut, tempus sodales lorem. Vivamus non tincidunt metus. Integer lectus sapien, laoreet ut placerat ut, aliquam et purus. Integer in semper mi. Nunc tempor eget urna a laoreet.
-
-    Phasellus a dapibus enim. Nam malesuada ex a massa convallis mattis. Etiam volutpat lacus vitae odio molestie, eget interdum orci venenatis. Ut non placerat diam, nec blandit nibh. Vestibulum ut sapien sed orci ornare commodo. Nam id neque in dui tristique venenatis ac sed lorem. Nulla aliquam turpis id lorem molestie egestas. Etiam semper sodales libero, sed varius ante. Phasellus mollis euismod est vel gravida. Cras bibendum neque eget odio laoreet, ac feugiat quam egestas. Maecenas feugiat erat facilisis lacus ornare dictum. Aliquam quis porttitor enim. Nunc quis consequat elit. Donec pellentesque, purus eu varius condimentum, enim enim vestibulum erat, ut scelerisque dolor nulla et mi. Praesent tincidunt ante vitae neque fermentum pulvinar. Maecenas fermentum placerat consectetur.`
+    title: 'Title',
+    date: 'May 6, 2019 13:30:00',
+    abstract: 'Abstract',
+    text: 'Text'
   },
-  { 
+  {
     id: 2,
-    title: 'Article two',
-    date: 'December 20, 2018 17:31:00',
-    abstract: 'Phasellus a dapibus enim. Nam malesuada ex a massa convallis mattis. Etiam volutpat lacus vitae odio molestie, eget interdum orci venenatis.',
-    text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu sollicitudin libero, vitae lacinia orci. Maecenas sed egestas ipsum. Duis euismod tincidunt pretium. Cras consequat risus id fermentum elementum. Nullam a lorem sed risus hendrerit rhoncus. Proin lacus lectus, ultrices gravida venenatis nec, eleifend quis erat. Donec et blandit nunc. Donec id ultricies eros, sed pretium velit. Etiam augue mi, posuere et facilisis auctor, placerat eget turpis. Suspendisse augue nisl, ultricies sit amet nisl ut, tempus sodales lorem. Vivamus non tincidunt metus. Integer lectus sapien, laoreet ut placerat ut, aliquam et purus. Integer in semper mi. Nunc tempor eget urna a laoreet.
-
-    Phasellus a dapibus enim. Nam malesuada ex a massa convallis mattis. Etiam volutpat lacus vitae odio molestie, eget interdum orci venenatis. Ut non placerat diam, nec blandit nibh. Vestibulum ut sapien sed orci ornare commodo. Nam id neque in dui tristique venenatis ac sed lorem. Nulla aliquam turpis id lorem molestie egestas. Etiam semper sodales libero, sed varius ante. Phasellus mollis euismod est vel gravida. Cras bibendum neque eget odio laoreet, ac feugiat quam egestas. Maecenas feugiat erat facilisis lacus ornare dictum. Aliquam quis porttitor enim. Nunc quis consequat elit. Donec pellentesque, purus eu varius condimentum, enim enim vestibulum erat, ut scelerisque dolor nulla et mi. Praesent tincidunt ante vitae neque fermentum pulvinar. Maecenas fermentum placerat consectetur.`
-  },
-  { 
-    id: 3,
-    title: 'Article three',
-    date: 'December 21, 2018 19:31:00',
-    abstract: 'Vestibulum ut sapien sed orci ornare commodo. Nam id neque in dui tristique venenatis ac sed lorem. Nulla aliquam turpis id lorem molestie egestas.',
-    text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu sollicitudin libero, vitae lacinia orci. Maecenas sed egestas ipsum. Duis euismod tincidunt pretium. Cras consequat risus id fermentum elementum. Nullam a lorem sed risus hendrerit rhoncus. Proin lacus lectus, ultrices gravida venenatis nec, eleifend quis erat. Donec et blandit nunc. Donec id ultricies eros, sed pretium velit. Etiam augue mi, posuere et facilisis auctor, placerat eget turpis. Suspendisse augue nisl, ultricies sit amet nisl ut, tempus sodales lorem. Vivamus non tincidunt metus. Integer lectus sapien, laoreet ut placerat ut, aliquam et purus. Integer in semper mi. Nunc tempor eget urna a laoreet.
-    
-    Phasellus a dapibus enim. Nam malesuada ex a massa convallis mattis. Etiam volutpat lacus vitae odio molestie, eget interdum orci venenatis. Ut non placerat diam, nec blandit nibh. Vestibulum ut sapien sed orci ornare commodo. Nam id neque in dui tristique venenatis ac sed lorem. Nulla aliquam turpis id lorem molestie egestas. Etiam semper sodales libero, sed varius ante. Phasellus mollis euismod est vel gravida. Cras bibendum neque eget odio laoreet, ac feugiat quam egestas. Maecenas feugiat erat facilisis lacus ornare dictum. Aliquam quis porttitor enim. Nunc quis consequat elit. Donec pellentesque, purus eu varius condimentum, enim enim vestibulum erat, ut scelerisque dolor nulla et mi. Praesent tincidunt ante vitae neque fermentum pulvinar. Maecenas fermentum placerat consectetur.`
-  },
+    title: 'Title 2',
+    date: 'May 7, 2019 13:30:00',
+    abstract: 'Abstract 2',
+    text: 'Text 2'
+  }
 ];
+
+const addArticleData = {
+  id: 3,
+  title: 'New article title',
+  date: 'August 23, 2019 21:39:00',
+  abstract: 'New article abstract',
+  text: 'New article content'
+};
 
 describe('articles reducer', () => {
   const initialState = setup();
   it('should return initial state', () => {
     expect(reducer(undefined, {})).toEqual(initialState);
-  })
+  });
+
+  it('should handle ADD_ARTICLE', () => {
+    expect(
+      reducer(setup(), {
+        type: types.ADD_ARTICLE
+      })).toEqual({
+        data: [],
+        loading: true,
+        error: null
+    });
+  });
+
+  it('should handle ADD_ARTICLE_SUCCESS', () => {
+    expect(
+      reducer(setup(), {
+        type: types.ADD_ARTICLE_SUCCESS,
+        payload: addArticleData
+      })).toEqual({
+        loading: false,
+        data: [addArticleData],
+        error: null
+    });
+  });
+
+  it('should handle GET_ARTICLES_SUCCESS', () => {
+    expect(
+      reducer(setup(), {
+        type: types.GET_ARTICLES_SUCCESS,
+        payload: getArticlesData
+      })).toEqual({
+        loading: false,
+        data: getArticlesData,
+        error: null
+    });
+  });
+
+  it('should handle ADD_ARTICLE_ERROR', () => {
+    expect(
+      reducer(setup(), {
+        type: types.ADD_ARTICLE_ERROR,
+        payload: 'error'
+      })).toEqual({
+        data: [],
+        loading: false,
+        error: 'error'
+    });
+  });
 })

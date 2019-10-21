@@ -4,8 +4,8 @@ import { Formik, Field, Form } from "formik";
 import { format } from 'date-fns';
 import { withRouter } from 'react-router-dom';
 import TextField from "./utils/TextField";
+import SnackbarContext from "./Snackbar/SnackbarContext";
 import { addArticle } from "../actions/articles";
-import { SnackbarContext } from "./Snackbar/SnackbarContext";
 
 const initialValues = {
   title: "",
