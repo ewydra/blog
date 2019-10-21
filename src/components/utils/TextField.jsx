@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 
-const InputFeedback = ({ type, children }) => {
+export const InputFeedback = ({ type, children }) => {
   const classes = classnames(
     'Text-field__message',
     { 'Text-field__message--error': type === 'error' }

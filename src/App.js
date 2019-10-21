@@ -8,7 +8,7 @@ import ArticleList from './components/ArticleList';
 import ArticleDetails from './components/ArticleDetails';
 import Navbar from './components/Navbar';
 import AddArticlePage from './components/AddArticlePage';
-import { SnackbarProvider } from './components/Snackbar/SnackbarContext';
+import SnackbarProvider from './components/Snackbar/SnackbarProvider';
 
 function App() {
   return (

@@ -4,8 +4,8 @@ import { Formik, Field, Form } from "formik";
 import { format } from 'date-fns';
 import { withRouter } from 'react-router-dom';
 import TextField from "./utils/TextField";
+import SnackbarContext from "./Snackbar/SnackbarContext";
 import { addArticle } from "../actions/articles";
-import { SnackbarContext } from "./Snackbar/SnackbarContext";
 
 const initialValues = {
   title: "",
@@ -28,8 +28,7 @@ export class ArticleForm extends Component {
   submit = (values, { resetForm }) => {
     values.date = format(new Date(), 'MMMM d, yyyy H:mm:ss');
     values.id = Date.now();
-    this.props.addArticle(values);
-    this.props.history.push(`/article/${values.id}`);
+    this.props.addArticle(values, this.props.history);
     this.context.showSnackbar('The article was published successfully', 'success');
     resetForm();
   }

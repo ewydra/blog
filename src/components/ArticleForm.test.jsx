@@ -30,15 +30,11 @@ describe('ArticleForm', () => {
   });
 
   it('should update inputs when they are changed', () => {
-    component.find('#title').simulate('change', {
-      target: { name: 'title', value: 'title' },
-    });
-    component.find('#abstract').simulate('change', {
-      target: { name: 'abstract', value: 'abstract' },
-    });
-    component.find('#text').simulate('change', {
-      target: { name: 'text', value: 'text' },
-    });
+    ['title', 'abstract', 'text'].forEach(name => {
+      component.find(`#${name}`).simulate('change', {
+        target: { name, value: name },
+      });
+    })
 
     expect(component.find('#title').props().value).toEqual('title');
     expect(component.find('#abstract').props().value).toEqual('abstract');
