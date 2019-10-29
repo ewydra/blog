@@ -1,23 +1,18 @@
-import React, {Component} from 'react';
+import React from 'react';
 import ArticleListItem from './ArticleListItem';
 import withLoading from './utils/withLoading';
 
-export class ArticleList extends Component {
-  listArticles = () => (
-    Object.entries(this.props.articles).map(([key, val]) => {
+export const ArticleList = ({ articles }) => {
+  const listArticles = () => 
+    Object.entries(articles).map(([key, val]) => {
       return <ArticleListItem key={key} article={val} />
     })
-  )
 
-  render() {
-    return ( 
+    return (
       <ul className="Article-list">
-        {this.listArticles()}
+        {listArticles()}
       </ul>
     )
-  }
 }
 
-ArticleList = withLoading(ArticleList)
-
-export default ArticleList;
+export default withLoading(ArticleList);

@@ -1,20 +1,17 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { isLoading, getArticlesSelector } from '../selectors/articles';
 import { fetchArticles } from '../actions/articles';
 import { ArticleList } from './ArticleList';
 
-class ArticleListPage extends Component {
-  componentDidMount() {
-    this.props.fetchArticles();
-  }
+const ArticleListPage = ({ articles, isLoading, fetchArticles }) => {
+  useEffect(() => {
+    fetchArticles()
+  }, [fetchArticles]);
 
-  render() {
-    const { articles, isLoading } = this.props;
-    return (
-      <ArticleList articles={articles} isLoading={isLoading} />
-    )
-  }
+  return (
+    <ArticleList articles={articles} isLoading={isLoading} />
+  )
 }
 
 const mapStateToProps = (state) => ({
