@@ -33,6 +33,8 @@ const addArticleData = {
   text: 'New article content'
 };
 
+const setupHistory = () => ({ push: jest.fn()});
+
 describe('articles actions', () => {
   beforeEach(() => {
     store.clearActions();
@@ -60,7 +62,7 @@ describe('articles actions', () => {
       { type: types.ADD_ARTICLE_SUCCESS, payload: addArticleData }
     ];
 
-    await store.dispatch(actions.addArticle())
+    await store.dispatch(actions.createArticle(addArticleData, setupHistory()))
 
     expect(store.getActions()).toEqual(expectedActions);
     expect(mockAxios.post).toHaveBeenCalledTimes(1);

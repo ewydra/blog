@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { selectArticleById } from '../selectors/articles';
+import { getArticleByIdSelector } from '../selectors/articles';
 
 export const ArticleDetails = ({ article: { title, text, date } }) => (
   <article className="Article">
@@ -8,10 +8,13 @@ export const ArticleDetails = ({ article: { title, text, date } }) => (
     <section className="Article__content">{text}</section>
     <footer className="Article__footer">Created: {date}</footer>
   </article>
-);
+)
 
-const mapStateToProps = (state, props) => ({
-  article: selectArticleById(state, props.match.params.id),
-});
+const mapStateToProps = () => {
+  const getArticleById = getArticleByIdSelector()
+  return (state, props) => ({
+    article: getArticleById(state, props.match.params.id)
+  })
+}
 
 export default connect(mapStateToProps)(ArticleDetails);

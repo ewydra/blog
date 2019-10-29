@@ -1,22 +1,15 @@
 import React, {Component} from 'react';
-import { connect } from 'react-redux';
-import { getArticles, isLoading } from '../selectors/articles';
-import { fetchArticles } from '../actions/articles';
 import ArticleListItem from './ArticleListItem';
-import Spinner from './utils/Spinner';
+import withLoading from './utils/withLoading';
 
 export class ArticleList extends Component {
-  componentDidMount() {
-    this.props.fetchArticles();
-  }
-
-  listArticles = () => 
-    this.props.articles.map(article => {
-      return <ArticleListItem key={article.id} article={article} />
-    });
+  listArticles = () => (
+    Object.entries(this.props.articles).map(([key, val]) => {
+      return <ArticleListItem key={key} article={val} />
+    })
+  )
 
   render() {
-    if (this.props.isLoading) return <Spinner />
     return ( 
       <ul className="Article-list">
         {this.listArticles()}
@@ -25,13 +18,6 @@ export class ArticleList extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  articles: getArticles(state),
-  isLoading: isLoading(state),
-});
+ArticleList = withLoading(ArticleList)
 
-const mapDispatchToProps = {
-  fetchArticles
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ArticleList);
+export default ArticleList;
