@@ -3,15 +3,6 @@ import SnackbarContext from './SnackbarContext';
 import Snackbar from './Snackbar';
 
 export class SnackbarProvider extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isOpen: false,
-      message: '',
-      status: 'success',
-    };
-  }
-
   showSnackbar = (message, status) => {
     this.setState({
       message,
@@ -21,18 +12,18 @@ export class SnackbarProvider extends Component {
     setTimeout(() => this.setState({ isOpen: false}), 3000);
   };
 
+  state = {
+    isOpen: false,
+    message: '',
+    status: 'success',
+    showSnackbar: this.showSnackbar,
+  };
+
   render() {
     const { children } = this.props;
 
     return (
-      <SnackbarContext.Provider
-        value={{
-          showSnackbar: this.showSnackbar,
-          isOpen: this.state.isOpen,
-          message: this.state.message,
-          status: this.state.status,
-        }}
-      >
+      <SnackbarContext.Provider value={this.state}>
         <Snackbar />
         {children}
       </SnackbarContext.Provider>

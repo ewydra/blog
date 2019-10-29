@@ -1,11 +1,12 @@
 import React, { Component, Fragment } from "react";
+import { compose } from 'redux';
 import { connect } from "react-redux";
 import { Formik, Field, Form } from "formik";
 import { format } from 'date-fns';
 import { withRouter } from 'react-router-dom';
 import TextField from "./utils/TextField";
 import SnackbarContext from "./Snackbar/SnackbarContext";
-import { addArticle } from "../actions/articles";
+import { createArticle } from "../actions/articles";
 
 const initialValues = {
   title: "",
@@ -30,8 +31,9 @@ export class ArticleForm extends Component {
       date: format(new Date(), 'MMMM d, yyyy H:mm:ss'),
       id: Date.now()
     };
-    this.props.addArticle(data);
-    this.props.history.push(`/article/${data.id}`);
+    values.date = format(new Date(), 'MMMM d, yyyy H:mm:ss');
+    values.id = Date.now();
+    this.props.createArticle(data, this.props.history);
     this.context.showSnackbar('The article was published successfully', 'success');
     resetForm();
   }
@@ -39,7 +41,7 @@ export class ArticleForm extends Component {
   render() {
     return (
       <Fragment>
-        <h1 className="Article-form__title">{this.props.title}</h1>
+        <h1 className="Article-form__title">{this.props.title || ''}</h1>
           <Formik
             initialValues={this.props.article || initialValues}
             onSubmit={this.submit}
@@ -78,10 +80,10 @@ export class ArticleForm extends Component {
 }
 
 const mapDispatchToProps = {
-  addArticle
+  createArticle
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(withRouter(ArticleForm));
+export default compose(
+  connect(null, mapDispatchToProps),
+  withRouter,
+)(ArticleForm);

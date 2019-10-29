@@ -1,7 +1,6 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import mockAxios from 'axios';
-import * as types from '../types/articles';
 import * as actions from './articles';
 
 const middlewares = [thunk]
@@ -33,6 +32,8 @@ const addArticleData = {
   text: 'New article content'
 };
 
+const setupHistory = () => ({ push: jest.fn()});
+
 describe('articles actions', () => {
   beforeEach(() => {
     store.clearActions();
@@ -42,8 +43,8 @@ describe('articles actions', () => {
     mockAxios.get.mockImplementationOnce(() => Promise.resolve({ data: fetchArticlesData }));
 
     const expectedActions = [
-      { type: types.GET_ARTICLES },
-      { type: types.GET_ARTICLES_SUCCESS, payload: fetchArticlesData }
+      actions.getArticles(),
+      actions.getArticlesSuccess(fetchArticlesData)
     ];
 
     await store.dispatch(actions.fetchArticles())
@@ -56,11 +57,11 @@ describe('articles actions', () => {
     mockAxios.post.mockImplementationOnce(() => Promise.resolve({ data: addArticleData }));
 
     const expectedActions = [
-      { type: types.ADD_ARTICLE },
-      { type: types.ADD_ARTICLE_SUCCESS, payload: addArticleData }
+      actions.addArticle(),
+      actions.addArticleSuccess(addArticleData)
     ];
 
-    await store.dispatch(actions.addArticle())
+    await store.dispatch(actions.createArticle(addArticleData, setupHistory()))
 
     expect(store.getActions()).toEqual(expectedActions);
     expect(mockAxios.post).toHaveBeenCalledTimes(1);
