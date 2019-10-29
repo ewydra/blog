@@ -1,36 +1,32 @@
-import React, { Component } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import SnackbarContext from './SnackbarContext';
 import Snackbar from './Snackbar';
 
-export class SnackbarProvider extends Component {
-  showSnackbar = (message, status) => {
-    this.setState({
-      message,
-      status,
-      isOpen: true,
-    });
-    setTimeout(() => this.setState({ isOpen: false}), 3000);
-  };
+export const SnackbarProvider = ({ children }) => {
+  const [isOpen, setIsOpen] = useState(false)
+  const [message, setMessage] = useState('')
+  const [status, setStatus] = useState('success')
 
-  state = {
-    isOpen: false,
-    message: '',
-    status: 'success',
-    showSnackbar: this.showSnackbar,
-  };
+  const showSnackbar = useCallback((message, status) => {
+    setIsOpen(true)
+    setMessage(message)
+    setStatus(status)
+    setTimeout(() => setIsOpen(false), 3000);
+  }, []);
 
-  render() {
-    const { children } = this.props;
+  const value = useMemo(() => ({
+    isOpen,
+    message,
+    status,
+    showSnackbar,
+  }), [isOpen, message, status, showSnackbar])
 
-    return (
-      <SnackbarContext.Provider
-        value={this.state}
-      >
-        <Snackbar />
-        {children}
-      </SnackbarContext.Provider>
-    );
-  }
+  return (
+    <SnackbarContext.Provider value={value}>
+      <Snackbar />
+      {children}
+    </SnackbarContext.Provider>
+  );
 }
 
 export default SnackbarProvider;
