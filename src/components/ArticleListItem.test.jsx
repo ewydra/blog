@@ -3,14 +3,13 @@ import { shallow } from 'enzyme';
 import ArticleListItem from './ArticleListItem';
 
 const setup = () => {
-    const article = 
-      { 
-        id: 1,
-        title: 'Article one',
-        date: 'January 1, 2019 13:00:00',
-        abstract: 'Test abstract',
-        text: 'Test text'
-      };
+    const article = { 
+      id: 1,
+      title: 'Article one',
+      date: 'January 1, 2019 13:00:00',
+      abstract: 'Test abstract',
+      text: 'Test text'
+    };
     return { article };
   }
 

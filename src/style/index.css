@@ -1,6 +1,9 @@
 @import "./_articles.css";
 @import "./_article.css";
 @import "./_navbar.css";
+@import "./_articleForm.css";
+@import "./_snackbar.css";
+@import "./_utils.css";
 
 body {
   margin: 0;
@@ -20,4 +23,7 @@ code {
   --font-color: rgb(45, 49, 59);
   --background-highlight: rgba(176, 196, 222, 0.1);
   --background-blue: rgb(219, 231, 248);
+  --error-color: rgb(190, 17, 17);
+  --success-color: rgb(52, 160, 76);
+  --accent-color: rgb(167, 0, 69);
 }
