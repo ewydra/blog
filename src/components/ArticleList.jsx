@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
-import { connect } from 'react-redux';
 import ArticleListItem from './ArticleListItem';
-import { getArticles } from '../selectors/articles';
+import withLoading from './utils/withLoading';
 
 export class ArticleList extends Component {
-  listArticles = () => 
-    this.props.articles.map(article => {
+  listArticles = () => (
+    this.props.articles.map((article) => {
       return <ArticleListItem key={article.id} article={article} />
-    });
+    })
+  )
 
   render() {
     return (
@@ -18,8 +18,4 @@ export class ArticleList extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  articles: getArticles(state),
-});
-
-export default connect(mapStateToProps)(ArticleList);
+export default withLoading(ArticleList);

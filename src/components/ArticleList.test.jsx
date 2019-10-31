@@ -19,7 +19,10 @@ const setup = () => {
       abstract: 'Phasellus a dapibus enim. Nam malesuada ex a massa convallis mattis.',
       text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu sollicitudin libero, vitae lacinia orci.`
     }];
-  return { articles };
+  return { 
+    articles,
+    fetchArticles: jest.fn(),
+  };
 }
 
 describe('ArticleList', () => {

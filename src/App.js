@@ -4,11 +4,11 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import ArticleList from './components/ArticleList';
+import ArticleListPage from './components/ArticleListPage';
 import ArticleDetails from './components/ArticleDetails';
 import Navbar from './components/Navbar';
 import AddArticlePage from './components/AddArticlePage';
-import { SnackbarProvider } from './components/Snackbar/SnackbarContext';
+import SnackbarProvider from './components/Snackbar/SnackbarProvider';
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
-          <Route exact path="/" component={ArticleList} />
+          <Route exact path="/" component={ArticleListPage} />
           <Route path="/article/new" component={AddArticlePage} />
           <Route path="/article/:id" component={ArticleDetails} />
         </Switch>
