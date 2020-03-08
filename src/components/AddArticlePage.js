@@ -1,8 +1,9 @@
 import React from "react";
 import ArticleForm from "./ArticleForm";
+import ErrorBoundary from "./utils/ErrorBoundary";
 
 const AddArticlePage = () => (
-  <ArticleForm title="New article" />
+  <ErrorBoundary><ArticleForm title="New article" /></ErrorBoundary>
 );
 
 export default AddArticlePage;

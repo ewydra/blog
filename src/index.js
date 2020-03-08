@@ -5,10 +5,13 @@ import './style/index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import configureStore from './store';
+import AuthComponent from './components/AuthComponent';
 
 ReactDOM.render(
   <Provider store={configureStore()}>
-    <App />
+    <AuthComponent>
+      <App />
+    </AuthComponent>
   </Provider>, 
   document.getElementById('root')
 );

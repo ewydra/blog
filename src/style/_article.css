@@ -1,25 +1,35 @@
-.Article {
+.article {
   margin: 20px;
 }
 
-.Article__title {
+.article__title {
   font-weight: 650;
   font-size: 3em;
   margin-bottom: 20px;
   text-align: center;
 }
 
-.Article__content {
+.article__content {
   width: 80vw;
   margin: 0 auto;
   line-height: 1.5;
   white-space: pre-wrap;
 }
 
-.Article__footer {
+.article__footer {
   display: flex;
   justify-content: flex-end;
   width: 80vw;
   margin: 0 auto;
   padding-top: 10px;
+  margin-bottom: 30px;
+}
+
+.comment__wrapper {
+  padding: 8px;
+  border: lightsteelblue 2px solid;
+  border-radius: 5px;
+  width: 80vw;
+  margin: 0 auto;
+  margin-bottom: 20px;
 }

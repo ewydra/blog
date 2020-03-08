@@ -5,14 +5,19 @@
   "dependencies": {
     "axios": "^0.19.0",
     "classnames": "^2.2.6",
-    "date-fns": "^2.4.1",
+    "date-fns": "^2.15.0",
     "formik": "^1.5.8",
+    "history": "^4.10.1",
     "json-server": "^0.15.1",
+    "jsonwebtoken": "^8.5.1",
+    "mockdate": "^3.0.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
+    "react-modal": "^3.11.2",
     "react-redux": "^7.1.1",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "3.2.0",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^3.4.3",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0"
@@ -21,7 +26,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start:server": "json-server-auth db.json -p 8080"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -43,6 +49,7 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "jest-enzyme": "^7.1.2",
+    "json-server-auth": "^1.2.1",
     "redux-mock-store": "^1.5.3"
   }
 }

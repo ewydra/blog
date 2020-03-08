@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`AddArticlePage should render correctly 1`] = `
-<Connect(withRouter(ArticleForm))
-  title="New article"
-/>
-`;

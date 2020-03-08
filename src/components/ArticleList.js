@@ -11,7 +11,7 @@ export class ArticleList extends Component {
 
   render() {
     return (
-      <ul className="Article-list">
+      <ul className="article-list">
         {this.listArticles()}
       </ul>
     )

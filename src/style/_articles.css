@@ -1,4 +1,4 @@
-.Article-list {
+.article-list {
   display: flex;
   list-style-type: none;
   width: 70vw;
@@ -7,7 +7,7 @@
   padding: 20px 0;
 }
 
-.Article-list-item {
+.article-list-item {
   margin: 10px;
   text-decoration: none;
   border: lightsteelblue 2px solid;
@@ -15,11 +15,11 @@
   transition: background 0.3s;
 }
 
-.Article-list-item:hover {
+.article-list-item:hover {
   background: var(--background-highlight);
 }
 
-.Article-list-item__header {
+.article-list-item__header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -27,15 +27,15 @@
   text-decoration: none;
 }
 
-.Article-list-item__title {
+.article-list-item__title {
   font-weight: 650;
 }
 
-.Article-list-item__abstract {
+.article-list-item__abstract {
   padding: 0 20px 20px 20px;
 }
 
-.Article-list-item__link {
+.article-list-item__link {
   text-decoration: none;
   color: var(--font-color);
 }

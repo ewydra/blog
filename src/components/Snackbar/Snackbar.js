@@ -4,9 +4,9 @@ import SnackbarContext from './SnackbarContext';
 
 const getClasses = status => (
   classnames(
-    'Snackbar',
-    { 'Snackbar--error': status === 'error' },
-    { 'Snackbar--success': status === 'success' }
+    'snackbar',
+    { 'snackbar--error': status === 'error' },
+    { 'snackbar--success': status === 'success' }
   )
 );
 
