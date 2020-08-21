@@ -1,15 +1,19 @@
-.Navbar {
+.navbar {
   height: 70px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 0 30px;
   background-color: var(--background-blue);
 }
 
-.Navbar__link {
+.navbar__link {
   text-decoration: none;
   color: var(--font-color);
   font-size: 18px;
   padding: 20px;
   font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
 }

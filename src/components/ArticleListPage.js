@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { isLoading, getArticlesSelector } from '../selectors/articles';
 import { fetchArticles } from '../actions/articles';
 import { ArticleList } from './ArticleList';
+import ErrorBoundary from './utils/ErrorBoundary';
+import Clock from './Clock';
 
 class ArticleListPage extends Component {
   componentDidMount() {
@@ -12,7 +14,10 @@ class ArticleListPage extends Component {
   render() {
     const { articles, isLoading } = this.props;
     return (
-      <ArticleList articles={articles} isLoading={isLoading} />
+      <ErrorBoundary>
+        <ArticleList articles={articles} isLoading={isLoading} />
+        <Clock />
+      </ErrorBoundary>
     )
   }
 }

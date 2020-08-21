@@ -1,28 +1,31 @@
-import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
-import ArticleListPage from './components/ArticleListPage';
-import ArticleDetails from './components/ArticleDetails';
-import Navbar from './components/Navbar';
-import AddArticlePage from './components/AddArticlePage';
-import SnackbarProvider from './components/Snackbar/SnackbarProvider';
+import React from "react";
+import { Router, Switch, Route } from "react-router";
+import ArticleListPage from "./components/ArticleListPage";
+import ArticleDetails from "./components/ArticleDetails";
+import Navbar from "./components/Navbar";
+import AddArticlePage from "./components/AddArticlePage";
+import SnackbarProvider from "./components/Snackbar/SnackbarProvider";
+import RegisterPage from "./components/RegisterPage";
+import LoginPage from "./components/LoginPage";
+import AuthenticatedRoute from "./utils/AuthenticatedRoute";
+import UnauthenticatedRoute from "./utils/UnauthenticatedRoute";
+import history from "./utils/history"
 
 function App() {
   return (
     <SnackbarProvider>
-      <Router>
+      <Router history={history}>
         <Navbar />
         <Switch>
           <Route exact path="/" component={ArticleListPage} />
-          <Route path="/article/new" component={AddArticlePage} />
+          <AuthenticatedRoute path="/article/new" component={AddArticlePage} />
           <Route path="/article/:id" component={ArticleDetails} />
+          <UnauthenticatedRoute path="/register" component={RegisterPage} />
+          <UnauthenticatedRoute path="/login" component={LoginPage} />
         </Switch>
       </Router>
     </SnackbarProvider>
   );
-} 
+}
 
 export default App;

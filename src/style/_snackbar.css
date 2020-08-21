@@ -1,4 +1,4 @@
-.Snackbar {
+.snackbar {
   min-width: 250px;
   color: #fff;
   text-align: center;
@@ -11,10 +11,10 @@
   bottom: 3px;
 }
 
-.Snackbar--error {
+.snackbar--error {
   background-color: var(--error-color);
 }
 
-.Snackbar--success {
+.snackbar--success {
   background-color: var(--success-color);
 }

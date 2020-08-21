@@ -1,9 +1,9 @@
-.Text-field {
+.text-field {
   width: 100%;
   margin-bottom: 20px;
 }
 
-.Text-field__input {
+.text-field__input {
   resize: none;
   font-size: 16px;
   border-width: 0 0 2px 0;
@@ -15,25 +15,25 @@
   width: 100%;
 }
 
-.Text-field__input:focus {
+.text-field__input:focus {
   border-color: var(--font-color);
 }
 
-.Text-field__input--error {
+.text-field__input--error {
   border-color: var(--error-color)
 }
 
-.Text-field__message {
+.text-field__message {
   font-size: 11px;
   display: flex;
   position: fixed;
 }
 
-.Text-field__message--error {
+.text-field__message--error {
   color: var(--error-color);
 }
 
-.Spinner {
+.spinner {
   border: 5px solid #f3f3f3;
   border-top: 5px solid var(--accent-color);
   border-radius: 50%;
@@ -41,6 +41,25 @@
   height: 50px;
   animation: spin 2s linear infinite;
   margin: 20px auto;
+}
+
+.error-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  text-align: center;
+  padding: 20px 0;
+  color: var(--font-color);
+}
+
+.menu {
+  display: flex;
+}
+
+.clock {
+  text-align: center;
 }
 
 @keyframes spin {
