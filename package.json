@@ -27,7 +27,8 @@
     "build": "react-scripts build",
     "test": "TZ=UTC react-scripts test",
     "eject": "react-scripts eject",
-    "start:server": "json-server-auth db.json -p 8080"
+    "start:server": "json-server-auth db.json -p 8080",
+    "start:production": "json-server-auth db.json -p $PORT -s build"
   },
   "eslintConfig": {
     "extends": "react-app"
