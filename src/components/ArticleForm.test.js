@@ -54,7 +54,7 @@ describe('ArticleForm', () => {
     await new Promise(resolve => setTimeout(resolve, 0));
     component.update();
 
-    const errors = component.find('.Text-field__message--error');
+    const errors = component.find('.text-field__message--error');
     expect(errors).toHaveLength(3);
     expect(component.update().find('button[type="submit"]').props().disabled).toBe(false);
   })

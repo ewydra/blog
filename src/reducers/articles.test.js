@@ -1,7 +1,7 @@
 import reducer from './articles';
 import * as types from '../types/articles';
 
-const setup = () => ({ data: [], loading: false, error: null });
+const setup = () => ({ byId: {}, allIds: [], loading: false, error: null });
 
 const getArticlesData = [
   {
@@ -39,7 +39,8 @@ describe('articles reducer', () => {
       reducer(setup(), {
         type: types.ADD_ARTICLE
       })).toEqual({
-        data: [],
+        byId: {},
+        allIds: [],
         loading: true,
         error: null
     });
@@ -52,7 +53,10 @@ describe('articles reducer', () => {
         payload: addArticleData
       })).toEqual({
         loading: false,
-        data: [addArticleData],
+        byId: {
+          3: addArticleData,
+        },
+        allIds: [3],
         error: null
     });
   });
@@ -64,7 +68,23 @@ describe('articles reducer', () => {
         payload: getArticlesData
       })).toEqual({
         loading: false,
-        data: getArticlesData,
+        byId: {
+          1: {
+            id: 1,
+            title: 'Title',
+            date: 'May 6, 2019 13:30:00',
+            abstract: 'Abstract',
+            text: 'Text'
+          },
+          2: {
+            id: 2,
+            title: 'Title 2',
+            date: 'May 7, 2019 13:30:00',
+            abstract: 'Abstract 2',
+            text: 'Text 2'
+          }
+        },
+        allIds: [1, 2],
         error: null
     });
   });
@@ -75,7 +95,8 @@ describe('articles reducer', () => {
         type: types.ADD_ARTICLE_ERROR,
         payload: 'error'
       })).toEqual({
-        data: [],
+        allIds: [],
+        byId: {},
         loading: false,
         error: 'error'
     });

@@ -26,7 +26,7 @@ describe('Snackbar', () => {
     const component = mount(<Snackbar />);
 
     expect(component.find('div').prop('children')).toEqual('Test');
-    expect(component.find('div').hasClass('Snackbar--success')).toEqual(true);
+    expect(component.find('div').hasClass('snackbar--success')).toEqual(true);
   })
 
   it('should not be displayed when isOpen is false', () => {
