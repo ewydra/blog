@@ -4,6 +4,6 @@ exports[`Clock should update clock every second 1`] = `
 <div
   className="clock"
 >
-  20:46:14
+  18:46:14
 </div>
 `;
