@@ -1,3 +1,11 @@
 language: node_js
 node_js:
  - 12
+deploy:
+ provider: heroku
+ api_key:
+   secure: 4dd7c13e-9f89-4133-b520-783babe7f8ca
+ app: ewydra-blog
+ run:
+    - "npm run build"
+    - "npm run start:production"
