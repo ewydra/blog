@@ -8,6 +8,7 @@
     "date-fns": "^2.15.0",
     "formik": "^1.5.8",
     "history": "^4.10.1",
+    "jquery": "^3.5.1",
     "json-server": "^0.15.1",
     "json-server-auth": "^1.2.1",
     "jsonwebtoken": "^8.5.1",
@@ -51,6 +52,7 @@
     "enzyme-adapter-react-16": "^1.14.0",
     "jest-enzyme": "^7.1.2",
     "mockdate": "^3.0.2",
+    "nock": "^13.0.4",
     "redux-mock-store": "^1.5.3"
   }
 }
