@@ -22,11 +22,11 @@ function App() {
           <Navbar />
           <React.Suspense fallback={<Spinner />}>
             <Switch>
-              <Route exact path="/" render={(props) => <ArticleListPage {...props} />} />
-              <AuthenticatedRoute path="/article/new" render={(props) => <AddArticlePage {...props} />} />
-              <Route path="/article/:id" render={(props) => <ArticleDetails {...props} />} />
-              <UnauthenticatedRoute path="/register" render={(props) => <RegisterPage {...props} />} />
-              <UnauthenticatedRoute path="/login" render={(props) => <LoginPage {...props} />} />
+              <Route exact path="/" component={ArticleListPage} />
+              <AuthenticatedRoute path="/article/new" component={AddArticlePage} />
+              <Route path="/article/:id" component={ArticleDetails} />
+              <UnauthenticatedRoute path="/register" component={RegisterPage} />
+              <UnauthenticatedRoute path="/login" component={LoginPage} />
             </Switch>
           </React.Suspense>
         </Router>
