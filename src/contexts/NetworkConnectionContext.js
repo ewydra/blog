@@ -10,8 +10,8 @@ export function NetworkConnectionProvider({ children }) {
     window.addEventListener('offline', () => setOnline(false))
 
     return () => {
-      window.removeEventListener('online')
-      window.removeEventListener('offline')
+      window.removeEventListener('online', () => setOnline(true))
+      window.removeEventListener('offline', () => setOnline(false))
     }
   }, [])
 

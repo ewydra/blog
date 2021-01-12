@@ -39,3 +39,9 @@
   text-decoration: none;
   color: var(--font-color);
 }
+
+@media (max-width: 480px) {
+  .article-list {
+    width: 90vw;
+  }
+}
