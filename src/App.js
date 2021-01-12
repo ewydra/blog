@@ -10,10 +10,12 @@ import LoginPage from "./components/LoginPage";
 import AuthenticatedRoute from "./utils/AuthenticatedRoute";
 import UnauthenticatedRoute from "./utils/UnauthenticatedRoute";
 import history from "./utils/history"
+import { NetworkConnectionProvider } from "./contexts/NetworkConnectionContext";
 
 function App() {
   return (
     <SnackbarProvider>
+      <NetworkConnectionProvider>
       <Router history={history}>
         <Navbar />
         <Switch>
@@ -24,6 +26,7 @@ function App() {
           <UnauthenticatedRoute path="/login" component={LoginPage} />
         </Switch>
       </Router>
+      </NetworkConnectionProvider>
     </SnackbarProvider>
   );
 }
