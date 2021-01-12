@@ -6,6 +6,7 @@ import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import Navbar from './Navbar';
 import { Provider } from 'react-redux';
+import { NetworkConnectionProvider } from '../contexts/NetworkConnectionContext';
 
 const store = configureStore([
   thunk,
@@ -19,7 +20,15 @@ const store = configureStore([
 
 describe('Navbar', () => {
   it('should include links to home page and new article page', () => {                                       
-    const component = mount(<Provider store={store}><MemoryRouter><Navbar /></MemoryRouter></Provider>);
+    const component = mount(
+      <Provider store={store}>
+        <NetworkConnectionProvider>
+          <MemoryRouter>
+            <Navbar />
+          </MemoryRouter>
+        </NetworkConnectionProvider>
+      </Provider>
+    );
     expect(component).toContainReact(<Link className="navbar__link" to={{ pathname: "/" }}>Home page</Link>);
     expect(component).toContainReact(<Link className="navbar__link" to={{pathname: "/article/new" }}>New article</Link>);
   });
