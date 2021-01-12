@@ -15,4 +15,4 @@ const ArticleListItem = ({ article: { id, title, date, abstract } }) => (
   </li>
 );
 
-export default React.memo(ArticleListItem);
+export default ArticleListItem;
