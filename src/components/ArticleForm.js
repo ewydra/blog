@@ -1,12 +1,13 @@
 import React, { Component, Fragment } from "react";
 import { compose } from 'redux';
 import { connect } from "react-redux";
-import { Formik, Field, Form } from "formik";
+import { Formik, Field } from "formik";
 import { format } from 'date-fns';
 import { withRouter } from 'react-router';
 import TextField from "./utils/TextField";
 import SnackbarContext from "./Snackbar/SnackbarContext";
 import { createArticle } from "../actions/articles";
+import { Button } from "./Button";
 
 const initialValues = {
   title: "",
@@ -46,8 +47,8 @@ export class ArticleForm extends Component {
             initialValues={this.props.article || initialValues}
             onSubmit={this.submit}
             validate={validate}
-            render={({ isSubmitting }) => (
-              <Form className="form">
+            render={({ isSubmitting, handleSubmit }) => (
+              <div className="form">
                 <Field
                   name="title"
                   placeholder="Title"
@@ -64,14 +65,14 @@ export class ArticleForm extends Component {
                   rows={15}
                   component={TextField}
                 />
-                <button
+                <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="button --primary"
+                  onClick={handleSubmit}
                 >
                   Submit
-                </button>
-              </Form>
+                </Button>
+              </div>
             )}
           />
       </Fragment>

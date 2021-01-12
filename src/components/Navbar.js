@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { isLoggedIn } from "../selectors/users";
 import LogoutButton from "./LogoutButton";
 import { useSelector } from "react-redux";
+import { NetworkConnectionContext } from "../contexts/NetworkConnectionContext";
 
 const Navbar = () => {
+  const { isOnline } = useContext(NetworkConnectionContext)
   const isAuthenticated = useSelector(isLoggedIn);
 
   return (
@@ -13,7 +15,7 @@ const Navbar = () => {
       <Link className="navbar__link" to={{ pathname: "/" }}>
         Home page
       </Link>
-      {isAuthenticated && (
+      {isAuthenticated && isOnline && (
         <Link className="navbar__link" to={{pathname: "/article/new" }}>
           New article
         </Link>
