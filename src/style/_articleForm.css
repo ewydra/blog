@@ -12,6 +12,10 @@
   color: var(--font-color);
 }
 
+.form__buttons > button:not(:last-child) {
+  margin-right: 20px;
+}
+
 .button {
   border: 3px solid var(--accent-color);
   border-radius: 10px;
@@ -22,10 +26,6 @@
   margin-top: 10px;
   outline: none;
   cursor: pointer;
-}
-
-.button:not(:last-child) {
-  margin-right: 20px;
 }
 
 .button.--primary {

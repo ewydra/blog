@@ -33,3 +33,11 @@
   margin: 0 auto;
   margin-bottom: 20px;
 }
+
+.article__buttons {
+  width: 80vw;
+  margin: auto;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: flex-end;
+}

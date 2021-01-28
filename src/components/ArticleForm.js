@@ -6,7 +6,7 @@ import { format } from 'date-fns';
 import { withRouter } from 'react-router';
 import TextField from "./utils/TextField";
 import SnackbarContext from "./Snackbar/SnackbarContext";
-import { createArticle } from "../actions/articles";
+import { createArticle, updateArticle } from "../actions/articles";
 import { Button } from "./Button";
 
 const initialValues = {
@@ -27,15 +27,20 @@ export class ArticleForm extends Component {
   static contextType = SnackbarContext;
 
   submit = (values, { resetForm }) => {
+    const isEditMode = !!this.props.article
     const data = {
       ...values,
-      date: format(new Date(), 'MMMM d, yyyy H:mm:ss'),
-      id: Date.now()
+      id: isEditMode ? this.props.article.id : Date.now()
+      (...!isEditMode && {date: format(new Date(), 'MMMM d, yyyy H:mm:ss')}),
     };
-    values.date = format(new Date(), 'MMMM d, yyyy H:mm:ss');
-    values.id = Date.now();
-    this.props.createArticle(data, this.props.history);
-    this.context.showSnackbar('The article was published successfully', 'success');
+
+    if (isEditMode) {
+      this.props.updateArticle(data, this.props.history);
+      this.context.showSnackbar('The article was updated successfully', 'success');
+    } else {
+      this.props.createArticle(data, this.props.history);
+      this.context.showSnackbar('The article was published successfully', 'success');
+    }
     resetForm();
   }
 
@@ -81,7 +86,8 @@ export class ArticleForm extends Component {
 }
 
 const mapDispatchToProps = {
-  createArticle
+  createArticle,
+  updateArticle,
 };
 
 export default compose(

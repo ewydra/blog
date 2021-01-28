@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import jwt from "jsonwebtoken";
-import { setLoggedIn } from "../actions/users";
+import { fetchUserProfile, setLoggedIn } from "../actions/users";
 import { useDispatch } from "react-redux";
 
 export default function AuthComponent({children}) {
@@ -8,15 +8,19 @@ export default function AuthComponent({children}) {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
+    const authMethod = localStorage.getItem("auth_method")
     let isAuthenticated = false;
 
     if (token) {
       const { exp } = jwt.decode(token);
+
       if (exp * 1000 < Date.now()) {
         localStorage.removeItem("token");
-      } else {
-        isAuthenticated = true;
+        return;
       }
+
+      isAuthenticated = true;
+      dispatch(fetchUserProfile(token, authMethod))
     }
     
     dispatch(setLoggedIn(isAuthenticated));

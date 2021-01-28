@@ -1,3 +1,4 @@
+import jwt from 'jsonwebtoken'
 import * as types from '../types/articles';
 import axios from '../utils/axios';
 
@@ -14,11 +15,24 @@ export const fetchArticles = () => async dispatch => {
 export const createArticle = (payload, history) => async dispatch => {
   try {
     dispatch(addArticle());
-    const response = await axios.post('/articles', payload);
+    const userToken = localStorage.getItem("token")
+    const { sub } = jwt.decode(userToken)
+    const response = await axios.post('/articles', { ...payload, userId: sub });
     dispatch(addArticleSuccess(response.data));
     history.push(`/article/${response.data.id}`);
   } catch (error) {
     dispatch(addArticleError(error));
+  }
+}
+
+export const updateArticle = (payload, history) => async dispatch => {
+  try {
+    dispatch(editArticle());
+    const response = await axios.put(`/articles/${payload.id}`, payload);
+    dispatch(editArticleSuccess(response.data));
+    history.push(`/article/${response.data.id}`);
+  } catch (error) {
+    dispatch(editArticleError(error));
   }
 }
 
@@ -59,6 +73,10 @@ export const getArticlesError = payload => ({ type: types.GET_ARTICLES_ERROR, pa
 export const addArticle = () => ({ type: types.ADD_ARTICLE });
 export const addArticleSuccess = payload => ({ type: types.ADD_ARTICLE_SUCCESS, payload });
 export const addArticleError = payload => ({ type: types.ADD_ARTICLE_ERROR, payload });
+
+export const editArticle = () => ({ type: types.EDIT_ARTICLE });
+export const editArticleSuccess = payload => ({ type: types.EDIT_ARTICLE_SUCCESS, payload });
+export const editArticleError = payload => ({ type: types.EDIT_ARTICLE_ERROR, payload });
 
 export const getArticle = () => ({ type: types.GET_ARTICLE });
 export const getArticleSuccess = payload => ({ type: types.GET_ARTICLE_SUCCESS, payload });
