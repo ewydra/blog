@@ -7,6 +7,7 @@ export default function LogoutButton() {
 
   const handleLogout = useCallback(() => {
     localStorage.removeItem("token");
+    localStorage.removeItem("auth_method")
     dispatch(setLoggedIn(false));
   }, [dispatch])
 

@@ -1,8 +1,9 @@
+import { captureException } from "@sentry/react";
 import React, { Component } from "react";
 
 class ErrorBoundary extends Component {
   state = {
-    hasError: false
+    hasError: false,
   };
 
   static getDerivedStateFromError() {
@@ -11,6 +12,7 @@ class ErrorBoundary extends Component {
 
   componentDidCatch(error, errorInfo) {
     console.error(error, errorInfo);
+    captureException(error, { extra: errorInfo });
   }
 
   render() {

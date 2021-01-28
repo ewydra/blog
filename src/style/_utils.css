@@ -20,7 +20,7 @@
 }
 
 .text-field__input--error {
-  border-color: var(--error-color)
+  border-color: var(--error-color);
 }
 
 .text-field__message {
@@ -63,6 +63,26 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+table {
+  margin: auto;
+  width: 90%;
+}
+
+td,
+th {
+  border: 1px solid var(--background-blue);
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: var(--background-blue);
 }

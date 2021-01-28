@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { isLoading, getArticlesSelector } from '../selectors/articles';
-import { fetchArticles } from '../actions/articles';
-import { ArticleList } from './ArticleList';
-import ErrorBoundary from './utils/ErrorBoundary';
-import Clock from './Clock';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { isLoading, getArticlesSelector } from "../selectors/articles";
+import { fetchArticles } from "../actions/articles";
+import ArticleList from "./ArticleList";
+import ErrorBoundary from "./utils/ErrorBoundary";
+import Clock from "./Clock";
 
 class ArticleListPage extends Component {
   componentDidMount() {
@@ -18,7 +18,7 @@ class ArticleListPage extends Component {
         <ArticleList articles={articles} isLoading={isLoading} />
         <Clock />
       </ErrorBoundary>
-    )
+    );
   }
 }
 
@@ -28,7 +28,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  fetchArticles
+  fetchArticles,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArticleListPage);
